@@ -47,5 +47,10 @@ public class ObstacleMovementScript : MonoBehaviour
             _rocketAnime.SetBool("Explotion",true);
             _playerScript.isDead = true;
         }
+
+        if (collision.gameObject.CompareTag("RocketDestroy"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

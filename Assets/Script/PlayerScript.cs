@@ -27,7 +27,8 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)&&_isGrounded)
+        //if((Input.GetKeyDown(KeyCode.Space)&&_isGrounded)|| (Input.GetTouch(0).phase == TouchPhase.Began && _isGrounded))
+        if((Input.GetKeyDown(KeyCode.Space)&&_isGrounded))
         {
             _rBody.AddForce(Vector2.up*_jumpforce, ForceMode2D.Impulse);
             _sounds.JumpSound();
