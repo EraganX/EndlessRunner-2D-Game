@@ -7,7 +7,8 @@ public class GamePlaySounds : MonoBehaviour
     public AudioSource src;
     public AudioClip Jump, Explotion;
 
-    public void JumpSound() {
+    public void JumpSound()
+    {
         src.clip = Jump;
         src.Play();
     }
@@ -18,3 +19,4 @@ public class GamePlaySounds : MonoBehaviour
         src.Play();
     }
 }
+

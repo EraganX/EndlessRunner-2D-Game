@@ -32,6 +32,7 @@ public class SpawnObstacles : MonoBehaviour
             yield return new WaitForSeconds(_randomTimeToSpawn);
 
             newRocket =Instantiate(_rocket,new Vector2(_spawnerLocation.position.x,_randomY),Quaternion.identity);
+
             _isEnd = playerSc.isDead;
         }
         

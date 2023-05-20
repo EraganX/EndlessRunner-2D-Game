@@ -11,6 +11,10 @@ public class ObstacleMovementScript : MonoBehaviour
     private Animator _rocketAnime;
     private PlayerScript _playerScript;
 
+    private RocketMovingAudio _rocketMovingAudio;
+
+    bool sound = true;
+
 
     void Start()
     {
@@ -18,12 +22,18 @@ public class ObstacleMovementScript : MonoBehaviour
         _rocketAnime = GetComponent<Animator>();
         _playerScript = player.GetComponent<PlayerScript>();
         _playerScript.isDead = false;
+        _rocketMovingAudio = GetComponent<RocketMovingAudio>();
     }
 
 
     private void FixedUpdate()
     {
         MovementObstacle(_playerScript.isDead);
+        
+        if (sound) {
+            _rocketMovingAudio.RocketMoving();
+            sound = false;
+        }
     }
 
     private void MovementObstacle(bool deadPlayer) 
