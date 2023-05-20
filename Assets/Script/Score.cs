@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     [SerializeField] private Text _scoretext;
-    [SerializeField] private float _multiple = 1f;
+    [SerializeField] private float _multiple = 1f;      //Change the speed up time
 
     private float  _score;
     PlayerScript playerScript;
@@ -20,24 +20,24 @@ public class Score : MonoBehaviour
         _score = 0;
         playerScript = player.GetComponent<PlayerScript>();
 
-    }
+    } //Start
 
     void Update()
     {
         if(!playerScript.isDead)
         {
-            _scoretext.text = "Score : " + _score.ToString("0.0");
-            _score += Time.deltaTime;
-            SpeedUP();
+            _scoretext.text = "Score : " + _score.ToString("0.0");  //Score display in game window
+            _score += Time.deltaTime;                               //Add score according to the time
+            SpeedUP();                                              //Calling Speed Up function
         }
         else
         {
             _scoretext.text = "";
             finalScore = _score;
-            Time.timeScale = 1f;
-            SceneManageScript.Finalscore = finalScore;
+            Time.timeScale = 1f;                            //Reset game play speed 1x
+            SceneManageScript.Finalscore = finalScore;      //Final score value send to the Scenemanager
         }
-    }
+    }// update
 
     private void SpeedUP()
     {
@@ -72,5 +72,5 @@ public class Score : MonoBehaviour
         else {
             Time.timeScale = 5f;
         }
-    }
+    }//Game speed up accoding to the score
 }

@@ -15,7 +15,7 @@ public class BackgroundMovingScript : MonoBehaviour
     void Start()
     {
         mat = GetComponent<Renderer>().material;
-    }
+    } //start
 
     void Update()
     {
@@ -29,7 +29,7 @@ public class BackgroundMovingScript : MonoBehaviour
         }
         else
         {
-            _offset =0;
+            _offset =0;     //stop scrooling the background
         }
-    }
+    }//update
 }

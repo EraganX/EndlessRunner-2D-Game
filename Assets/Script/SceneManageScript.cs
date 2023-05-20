@@ -1,72 +1,37 @@
-/*using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class SceneManageScript : MonoBehaviour
-{
-    public static float Finalscore;
-
-
-    
-    public void StartGame()
-    {
-        Invoke("LoadGameScene", 0.5f);
-    }
-    
-    private void LoadGameScene()
-    {
-        SceneManager.LoadScene("Game");
-    }
-
-    public void EndGame()
-    {
-        SceneManager.LoadScene("Score Display");
-    }
-
-    public void ExitGame()
-    {
-#if UNITY_STANDALONE
-        Application.Quit();
-#endif
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-    }
-}
-*/
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneManageScript : MonoBehaviour
 {
     public static float Finalscore;
+    private float _gameDelya = 0.5f;    //change delay time
 
     public void StartGame()
     {
-        StartCoroutine(DelayedStartGame(0.5f));
-    }
+        StartCoroutine(DelayedStartGame(_gameDelya));     //Add Delay
+    } //add delay Start game
 
     private System.Collections.IEnumerator DelayedStartGame(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay);         //set Delay
         SceneManager.LoadScene("Game");
-    }
+    } //set delay Start
 
     public void EndGame()
     {
-        StartCoroutine(DelayedEndGame(0.5f));
-    }
+        StartCoroutine(DelayedEndGame(_gameDelya));     //Add Delay
+    } //add delay End
 
     private System.Collections.IEnumerator DelayedEndGame(float delay)
     {
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("Score Display");
-    }
+        yield return new WaitForSeconds(delay);         //set Delay
+        SceneManager.LoadScene("Score Display");        //Load Final Score scene
+    }//set EndGame / Score Display
 
     public void ExitGame()
     {
-        StartCoroutine(DelayedExitGame(0.5f));
-    }
+        StartCoroutine(DelayedExitGame(_gameDelya));     //Add Delay
+    }//add delay Exit
 
     private System.Collections.IEnumerator DelayedExitGame(float delay)
     {
@@ -77,5 +42,5 @@ public class SceneManageScript : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
-    }
+    } //set Game Exit / closed 
 }

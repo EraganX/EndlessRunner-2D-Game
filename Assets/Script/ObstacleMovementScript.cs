@@ -23,18 +23,18 @@ public class ObstacleMovementScript : MonoBehaviour
         _playerScript = player.GetComponent<PlayerScript>();
         _playerScript.isDead = false;
         _rocketMovingAudio = GetComponent<RocketMovingAudio>();
-    }
+    }//start
 
 
     private void FixedUpdate()
     {
-        MovementObstacle(_playerScript.isDead);
+        MovementObstacle(_playerScript.isDead); //call obstacles movement function
         
         if (sound) {
             _rocketMovingAudio.RocketMoving();
             sound = false;
-        }
-    }
+        }// rocket launch sound only one time
+    }//fixed update
 
     private void MovementObstacle(bool deadPlayer) 
     {
@@ -47,7 +47,7 @@ public class ObstacleMovementScript : MonoBehaviour
         {
             _rbody.velocity = new Vector2(-_moveSpeed, _rbody.velocity.y) * Time.fixedDeltaTime;
         }
-    }
+    }//obstacles moving until player's dead
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,6 +61,6 @@ public class ObstacleMovementScript : MonoBehaviour
         if (collision.gameObject.CompareTag("RocketDestroy"))
         {
             Destroy(this.gameObject);
-        }
-    }
+        } //remove unnessory game objects
+    }//collition detection
 }

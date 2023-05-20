@@ -10,5 +10,5 @@ public class RocketMovingAudio : MonoBehaviour
     public void RocketMoving() {
         src.clip = rocketMoveSound;
         src.Play();
-    }
+    }//rocket launch sound
 }
