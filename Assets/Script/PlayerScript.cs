@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D _rBody;
     private Animator _anime;
     private SceneManageScript _sceneManager;
+    private GamePlaySounds _sounds;
 
     private bool _isGrounded;
 
@@ -20,6 +21,7 @@ public class PlayerScript : MonoBehaviour
         _rBody = GetComponent<Rigidbody2D>();
         _anime = GetComponent<Animator>();
         _sceneManager = GetComponent<SceneManageScript>();
+        _sounds = GetComponent<GamePlaySounds>();
 
         isDead = false;
     }
@@ -28,7 +30,9 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)&&_isGrounded)
         {
             _rBody.AddForce(Vector2.up*_jumpforce, ForceMode2D.Impulse);
+            _sounds.JumpSound();
             _anime.SetBool("Jump",true);
+           
             _isGrounded = false;
         }
 
@@ -54,6 +58,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacles"))
         {
             _anime.SetBool("Die", true);
+            _sounds.BoomSound();
             isDead = true;
         }
     }
