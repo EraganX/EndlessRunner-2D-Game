@@ -34,9 +34,13 @@ public class PlayerScript : MonoBehaviour
 
         if(isDead)
         {
-            _sceneManager.EndGame();
+            Invoke("ShowScore",1f);
         }
         
+    }
+
+    private void ShowScore() {
+        _sceneManager.EndGame();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
