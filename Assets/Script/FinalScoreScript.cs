@@ -8,7 +8,7 @@ public class FinalScoreScript : MonoBehaviour
     private void Start()
     {  
         float score = SceneManageScript.Finalscore;                 //get final score from the Scenemanager script
-        displayScore.text = "Score:\n" + score.ToString("0.0");     //display converted score
+        displayScore.text = "Score :\n" + score.ToString("0.0");     //display converted score
     }//start
 }
 
