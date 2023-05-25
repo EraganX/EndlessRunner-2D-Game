@@ -5,7 +5,7 @@ public class SceneManageScript : MonoBehaviour
 {
     public static float Finalscore;
     private float _gameDelya = 0.5f;    //change delay time
-  
+
     public void StartGame()
     {
         StartCoroutine(DelayedStartGame(_gameDelya));     //Add Delay
