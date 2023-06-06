@@ -14,9 +14,19 @@ public class SceneManageScript : MonoBehaviour
     private System.Collections.IEnumerator DelayedStartGame(float delay)
     {
         yield return new WaitForSeconds(delay);         //set Delay
-        SceneManager.LoadScene("Game");
-        
+        SceneManager.LoadScene("Game"); 
     } //set delay Start
+
+    public void MainMenu()
+    {
+        StartCoroutine(DelayedMainMenu(_gameDelya));     //Add Delay
+    } //add delay Start game
+
+    private System.Collections.IEnumerator DelayedMainMenu(float delay)
+    {
+        yield return new WaitForSeconds(delay);         //set Delay
+        SceneManager.LoadScene("Main Menu");
+    }
 
     public void EndGame()
     {
