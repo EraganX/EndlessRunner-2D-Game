@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float _jumpforce;  
+    [SerializeField] ParticleSystem  _runParticles;  
 
     private Rigidbody2D _rBody;
     private Animator _anime;
@@ -35,6 +36,8 @@ public class PlayerScript : MonoBehaviour
             _anime.SetBool("Jump",true);
            
             _isGrounded = false;
+
+            RunParticles(0);
         } // only jump when the player is grounded
 
         if(isDead)
@@ -54,6 +57,7 @@ public class PlayerScript : MonoBehaviour
         {
             _anime.SetBool("Jump",false);       //jump animation stop
             _isGrounded = true;                 //set player grounded
+            RunParticles(1);
         }
 
         if (collision.gameObject.CompareTag("Obstacles"))
@@ -61,8 +65,20 @@ public class PlayerScript : MonoBehaviour
             _anime.SetBool("Die", true);
             _sounds.BoomSound();                //play boom sound
             isDead = true;
+            RunParticles(0);
         }
     }//OnCollition Enter 2d
 
+    private void RunParticles(int active)
+    {
+        if (active == 1)
+        {
+            _runParticles.Play();
+        }
+        else
+        {
+            _runParticles.Stop();
+        }
+    }//Run particle active and deactive
 
 }
